@@ -1,0 +1,79 @@
+% GTER BEAMER THEME (MODIFIED BY LINED THEME - SEE THE FOLLOWING COPYRIGHT)
+
+%
+
+% Copyright 2007 by Till Tantau
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+
+\ProvidesPackageRCS $Header: /home/vedranm/bitbucket/beamer/base/themes/theme/compatibility/beamerthemelined.sty,v d02a7cf4d8ae 2010/06/17 09:11:41 rivanvx $
+
+
+\mode<presentation>
+
+\setbeamerfont{date}{size=\scriptsize}
+
+
+%%%%%%%%%%%%%
+%header - definito nel file smoothbars_GTER che quindi deve essere anch'esso presente
+%%%%%%%%%%%%%
+\useoutertheme[RGB={0,99,29},subsection=false]{smoothbars_GTER}
+
+%\setbeamertemplate{headline}[text line]
+%{%
+%  \vbox{%
+%    \vskip3pt%
+%    \beamerline{\insertnavigation{\paperwidth}}%
+%    \vskip1.5pt%
+%    \insertvrule{0.4pt}{beamerstructure!50!averagebackgroundcolor}%
+%    \vskip1.5pt%
+%    \tinyline{\color{beamerstructure}\insertsubsection\hfill}
+%    \insertvrule{4pt}{beamerstructure!50!averagebackgroundcolor}%
+%  }%
+%}
+
+                                % Footline
+\setbeamertemplate{footline}[text line]
+{%
+  \ifbeamertemplateempty{logo}
+  {%
+    \vbox{%
+      \setbox\beamer@tempbox=\hbox{\tiny\insertshortauthor: \insertshorttitle\hskip1.5cm\insertshortinstitute}%
+      \ifdim\wd\beamer@tempbox>\paperwidth%
+        \insertvrule{4pt}{beamerstructure!50!averagebackgroundcolor}%
+        \vskip1.5pt
+        \tinyline{\color{beamerstructure}\insertshortauthor:\hfill\insertshortinstitute}%
+        \tinyline{\color{beamerstructure}\insertshorttitle\hfill\lower1pt\hbox{\insertnavigationsymbols}}%
+      \else%
+        \setbox\beamer@tempbox=\hbox{\beamerline{\hbox to\paperwidth{\hfill\lower1pt\hbox{\insertnavigationsymbols}}}}%
+        \ht\beamer@tempbox=0pt%
+        \box\beamer@tempbox%
+        \insertvrule{4pt}{beamerstructure!50!averagebackgroundcolor}%
+        \vskip1.5pt
+        \tinyline{\color{beamerstructure}\insertshortauthor \insertshorttitle\hfill\insertshortinstitute}%
+      \fi}%
+  }
+  {%
+    \vbox{%
+      \insertvrule{4pt}{beamerstructure!50!averagebackgroundcolor}%
+      \vskip1.5pt%
+      \setbox\beamer@logobox=\hbox{\lower1pt\hbox{\usebeamertemplate*{logo}}}%
+      \tinyline{\color{beamerstructure}\insertshortauthor\hfill \hskip0.1cm\insertframenumber{} / \inserttotalframenumber}%
+      % \hspace da personalizzare
+      \tinyline{\hbox{\dp\beamer@logobox=0pt\ht\beamer@logobox=0pt\box\beamer@logobox \color{beamerstructure} \hspace*{2ex} \insertshorttitle \hfill \hspace*{17ex} \lower 1pt \hbox{\insertnavigationsymbols}}
+      }%
+    }%
+  }%
+}
+
+
+
+\userightsidebartemplate{0cm}{}
+
+\mode
+<all>
